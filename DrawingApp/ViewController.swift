@@ -9,6 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var drawView: DrawView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +23,27 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func clearTapped() {
+        drawView.lines = []
+        drawView.setNeedsDisplay()
+    }
 
-
+    @IBAction func colorTapped(sender: UIButton) {
+        var color: UIColor
+        if (sender.titleLabel?.text == "Red") {
+            color = UIColor.redColor()
+        }
+        else if(sender.titleLabel?.text == "Blue"){
+            color = UIColor.blueColor()
+        }
+        else{
+            color = UIColor.blackColor()
+        }
+        
+        drawView.drawColor = color
+        
+    }
+    
 }
 
